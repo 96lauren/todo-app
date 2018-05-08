@@ -8,17 +8,21 @@
 	<style type="text/css">
 		 body{
 		 	background: #ccc;
-		 	padding-top: 50px;
+		 	padding-top: 50px; 
 		 }
 		.container{
 			background: #fff;
 			max-width: 600px;
 			padding: 25px;
 		}
-	</style> 
+	</style>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="app">
+		
 
 		<form method="post" >
 			
@@ -27,7 +31,7 @@
 				<div class="col">
 					<div class="form-group">
 				
-						<input type="text" name="taskName" class="form-control">
+						<input v-model = "item" type="text" name="taskName" class="form-control">
 
 						<label>Task Name </label>
 
@@ -48,21 +52,17 @@
 			
 
 			
-			<button type="submit" class="btn-primary btn-block">Add Task</button>
+			<button  v-on:Click ="addTodo" type="button" class="btn-primary btn-block">Add Task</button>
 		</form>
 
 		<hr>
 
 		<h3>Todo Items</h3>
 
-			<ul class="list-group">
+			<ul >
 
 				
-				<li class="list-group-item d-flex justify-content-between align-items-center">watch originals 
-					
-					<span class="badge badge-primary badge-pill">8hrs</span>
-
-				</li>
+				<li v-for= "todo in todos">{{ todo}}</li>
 
 			</ul>
 

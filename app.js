@@ -1,29 +1,19 @@
-const form = document.querySelector('form')
-const taskInput =document.querySelector('input[name=taskName]')
-const dateInput = document.querySelector('input[name=taskDate]')
-const ul = document.querySelector('ul')
+var app = new Vue({
+  el: '#app',
+  data: {
+    todos: [
+    'my first to do item',
+    'my second to do item',
+    'third to do item' ],
+    item:'To do item'
+  },
 
-form.onsubmit= function(e){
-	e.preventDefault()
-	
-	let taskTitle =taskInput.value
-	let taskDate = dateInput.value
-// creating list element
-	const li = document.createElement('li')
-	li.textContent=taskTitle
-	li.classList.add('list-group-item')
-	li.classList.add('d-flex')
-	li.classList.add('justify-content-between')
-	li.classList.add('align-items-center')
+  methods: {
 
-	const span =document.createElement('span')
-	span.textContent = taskDate
+  	addTodo(){
+  		this.todos.push(this.item)
+  		this.item = ''
 
-	span.classList.add('badge')
-	span.classList.add('badge-primary')
-	span.classList.add('badge-pill')
-
-	li.appendChild(span)
-
-	ul.appendChild(li)
-}
+  	}
+  }
+})
